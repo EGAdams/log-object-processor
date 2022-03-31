@@ -1,0 +1,29 @@
+{
+  "name": "log-object-processor",
+  "version": "1.0.0",
+  "description": "Controls an internal Q for processing logs.",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile_typescript": "tsc",
+    "watch_and_compile_typescript": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EGAdams/log-object-processor.git"
+  },
+  "keywords": [
+    "log",
+    "processor",
+    "que"
+  ],
+  "author": "EG Adams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EGAdams/log-object-processor/issues"
+  },
+  "homepage": "https://github.com/EGAdams/log-object-processor#readme",
+  "dependencies": {
+    "typescript": "^4.6.3",
+    "typescript-sand": "^1.0.0"
+  }
+}
