@@ -35,5 +35,5 @@ export default class LogObjectProcessor  {
         this.unwrittenLogs = []; } 
         
     getWrittenLogs(): Array< ILogObject > {
-        return this.unwrittenLogs; }    
+        return this.writtenLogs; }    
 }
