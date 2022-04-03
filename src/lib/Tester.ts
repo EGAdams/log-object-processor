@@ -1,7 +1,11 @@
+/* eslint-disable functional/prefer-readonly-type */
+/* eslint-disable functional/no-this-expression */
+/* eslint-disable functional/no-return-void */
+/* eslint-disable functional/no-class */
 /*
  * class Tester
  */
-class Tester {
+export class Tester {
     testableObjects: Array< string >;
     constructor( testableObjectsArg: Array< string > ) {
         this.testableObjects = testableObjectsArg;
@@ -17,11 +21,10 @@ class Tester {
                 console.log( "end " + specimen + " test.\n" );
             }
         });
-    }   
+    }
 }
 
-const tester = new Tester([ "LogObjectProcessorTest" ]);
-tester.start();
-console.log( "end testing testable objects." );
+// const tester = new Tester([ "LogObjectProcessorTest" ]);
+// tester.start();
+// console.log( "end testing testable objects." );
 
-module.exports = Tester;

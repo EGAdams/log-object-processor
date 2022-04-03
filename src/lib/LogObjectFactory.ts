@@ -1,16 +1,21 @@
-import ILogObject from "../abstract/ILogObject";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-var */
+/* eslint-disable functional/prefer-readonly-type */
+/* eslint-disable functional/no-this-expression */
+/* eslint-disable functional/no-class */
+import ILogObject from "./ILogObject";
 /**
  * @description
  * creates log objects giving them a unique id, time stamp, and determined calling method.
- * 
+ *
  * @class LogObjectFactory
  */
 export default class LogObjectFactory {
     someObject: any;
-    constructor( someObjectArg: any ) { 
-        console.log( 'constructing LogObjectFactory object...' ); 
+    constructor( someObjectArg: any ) {
+        console.log( 'constructing LogObjectFactory object...' );
         this.someObject = someObjectArg; }
-    
+
     createLogObject( messageArg: string ): ILogObject {
         const time_now              = Date.now();
         const random_number         = Math.floor( Math.random() * 10000000000000 );
