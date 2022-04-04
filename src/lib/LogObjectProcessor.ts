@@ -9,7 +9,7 @@ import { ILogObject } from "./ILogObject";
 import { LogObjectContainer } from "./LogObjectContainer";
 /**
  * @description
- *   Maintains an array of written and unwritten logs from container
+ *   Maintains an array of written and unwritten logs from a container
  *   of log objects that is passed in on construction.
  *
  * @class LogObjectProcessor
