@@ -3,14 +3,14 @@
 /* eslint-disable functional/prefer-readonly-type */
 /* eslint-disable functional/no-this-expression */
 /* eslint-disable functional/no-class */
-import ILogObject from "./ILogObject";
+import { ILogObject } from "./ILogObject";
 /**
  * @description
  * creates log objects giving them a unique id, time stamp, and determined calling method.
  *
  * @class LogObjectFactory
  */
-export default class LogObjectFactory {
+export class LogObjectFactory {
     someObject: any;
     constructor( someObjectArg: any ) {
         console.log( 'constructing LogObjectFactory object...' );

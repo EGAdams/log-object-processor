@@ -1,6 +1,6 @@
 /* eslint-disable functional/immutable-data */
 import FreshToolBox from "./FreshToolBox";
-import ILogObject from "./ILogObject";
+import { ILogObject } from "./ILogObject";
 
 /**
  * @description

@@ -5,10 +5,10 @@
 /* eslint-disable functional/no-return-void */
 /* eslint-disable functional/no-class */
 import FreshToolbox from "./FreshToolbox";
-import ILogObject from "./ILogObject";
+import { ILogObject } from "./ILogObject";
 import ITestable from "./ITestable";
 import { LogObjectContainer } from "./LogObjectContainer";
-import LogObjectFactory from "./LogObjectFactory";
+import { LogObjectFactory } from "./LogObjectFactory";
 import { LogObjectProcessor } from "./LogObjectProcessor";
 /**
  * @description
@@ -19,7 +19,7 @@ import { LogObjectProcessor } from "./LogObjectProcessor";
  * @class LogObjectProcessorTest
  * @implements {ITestable}
  */
-export default class LogObjectProcessorTest implements ITestable {
+export class LogObjectProcessorTest implements ITestable {
     writtenLogs: Array< ILogObject > = [];
     constructor() { console.log( 'constructing LogObjectProcessorTest object...' ); }
     testMe(): void {

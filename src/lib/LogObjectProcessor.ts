@@ -5,7 +5,7 @@
 /* eslint-disable functional/prefer-readonly-type */
 /* eslint-disable functional/no-class */
 import FreshToolBox from "./FreshToolBox";
-import ILogObject from "./ILogObject";
+import { ILogObject } from "./ILogObject";
 import { LogObjectContainer } from "./LogObjectContainer";
 /**
  * @description
