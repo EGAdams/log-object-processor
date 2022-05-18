@@ -26,11 +26,11 @@ export class LogObjectProcessor  {
     updateQue() {
         console.log( 'updating que...' );
         const freshData = this.logObjectContainer.getLogObjects();
-        for ( const logObject in freshData ) {
+        for ( const logObject in freshData ) {  // Array< ILogObject > freshData;
             this.addLog( freshData[ logObject ]); }}
 
     addLog( logToAdd: ILogObject ): void {
-        if ( !FreshToolBox.isInArray( logToAdd, this.writtenLogs )) {
+        if ( !FreshToolBox.isInArray( logToAdd, this.unwrittenLogs )) {
             this.unwrittenLogs.push( logToAdd ); }}
 
 

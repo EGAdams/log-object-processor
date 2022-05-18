@@ -17,7 +17,7 @@ import { LogObjectProcessor } from "./LogObjectProcessor";
  * detect the previous 10 entries and only grow by 5.
  *
  * @class LogObjectProcessorTest
- * @implements {ITestable}
+ * @implements { ITestable }
  */
 export class LogObjectProcessorTest implements ITestable {
     writtenLogs: Array< ILogObject > = [];

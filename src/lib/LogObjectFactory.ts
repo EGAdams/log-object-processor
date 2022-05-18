@@ -23,10 +23,10 @@ export class LogObjectFactory {
             timestamp: time_now,
             id:        this.someObject.constructor.name + "_" + random_number + '_' + time_now,
             message:   messageArg,
-            method:    this.getCallingMethod() };
+            method:    this._getCallingMethod() };
         return logObject; }
 
-    getCallingMethod(): string {
+    private _getCallingMethod(): string {
         var obj:any = {};
         Error.captureStackTrace( obj, this.getCallingMethod );
         return obj.stack.split( '\n' )[ 2 ].match( /at\s+\w+.(\w+)/ )[ 1 ]; }
