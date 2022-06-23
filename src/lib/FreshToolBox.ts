@@ -29,11 +29,12 @@ export default class FreshToolBox {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     static isInArray ( objectToSearchFor: any, arrayToSearch: Array< any > ): boolean {
-        for ( let element in arrayToSearch ) {
+        // eslint-disable-next-line functional/no-loop-statement
+        for ( const element in arrayToSearch ) {
             if ( arrayToSearch[ element ].id == objectToSearchFor.id ) {
                 return true; }
         }
-        return false; 
+        return false;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

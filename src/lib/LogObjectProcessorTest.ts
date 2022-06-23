@@ -8,7 +8,7 @@ import FreshToolbox from "./FreshToolbox";
 import { ILogObject } from "./ILogObject";
 import ITestable from "./ITestable";
 import { LogObjectContainer } from "./LogObjectContainer";
-import { LogObjectContainerSource } from "./LogObjectContainerSource";
+// import { LogObjectContainerSource } from "./LogObjectContainerSource";
 import { LogObjectFactory } from "./LogObjectFactory";
 import { LogObjectProcessor } from "./LogObjectProcessor";
 /**
@@ -26,20 +26,20 @@ export class LogObjectProcessorTest implements ITestable {
     testMe(): void {
         const logObjectContainer = new LogObjectContainer();
         const logObjectFactory   = new LogObjectFactory( this );
-        for ( let i = 0; i < 10; i++ ) {
+        for ( let i = 0; i < 3; i++ ) {
             logObjectContainer.addLog( logObjectFactory.createLogObject( "message_" + i )); }
-        FreshToolbox.assert( logObjectContainer.getLogObjects().length === 10, "logObjectContainer.getLogObjects().length === 10" );
+        FreshToolbox.assert( logObjectContainer.getLogObjects().length === 3, "logObjectContainer.getLogObjects().length === 3" );
         const logObjectProcessor = new LogObjectProcessor( logObjectContainer );
         logObjectProcessor.updateQue();
         logObjectProcessor.processLogObjects();
-        if ( logObjectProcessor.writtenLogs.length !== 10 && logObjectProcessor.unwrittenLogs.length !== 0 ) {
+        if ( logObjectProcessor.writtenLogs.length !== 3 && logObjectProcessor.unwrittenLogs.length !== 0 ) {
             console.error( "*** LogObjectProcessorTest failed! ***" ); }
-        for ( let i = 0; i < 500; i++ ) {
+        for ( let i = 0; i < 6; i++ ) {
             logObjectContainer.addLog( logObjectFactory.createLogObject( "message_" + i )); }
         logObjectProcessor.updateQue();
         logObjectProcessor.processLogObjects();
 
-        if ( logObjectProcessor.writtenLogs.length === 510 && logObjectProcessor.unwrittenLogs.length === 0 ) {
+        if ( logObjectProcessor.writtenLogs.length === 9 && logObjectProcessor.unwrittenLogs.length === 0 ) {
             console.log( "LogObjectProcessorTest passed round one." );
         } else {
             console.error( "*** LogObjectProcessorTest failed! ***" );
@@ -65,7 +65,7 @@ export class LogObjectProcessorTest implements ITestable {
         logObjectContainer.addLog( logObject2 );
         logObjectProcessor.updateQue();
         logObjectProcessor.processLogObjects();
-        FreshToolbox.assert( logObjectProcessor.writtenLogs.length === 512, "logObjectProcessor.writtenLogs.length === 512" );
+        FreshToolbox.assert( logObjectProcessor.writtenLogs.length === 11, "logObjectProcessor.writtenLogs.length === 512" );
 
         // these next 3 should not add anything to the writtenLogs array
         logObjectContainer.addLog( logObject1 );
@@ -73,22 +73,12 @@ export class LogObjectProcessorTest implements ITestable {
         logObjectProcessor.updateQue();
         logObjectProcessor.processLogObjects();
 
-        if ( logObjectProcessor.writtenLogs.length == 512 && logObjectProcessor.unwrittenLogs.length === 0 ) {
+        if ( logObjectProcessor.writtenLogs.length == 11 && logObjectProcessor.unwrittenLogs.length === 0 ) {
             console.log( "LogObjectProcessorTest Passed add two" );
         }
 
-        const logObjectContainerSource = new LogObjectContainerSource();
-        logObjectContainerSource.refresh( "MessageManager_1526");
-
-
-
-
-        // if ( logObjectProcessor.writtenLogs.length === 513 && logObjectProcessor.unwrittenLogs.length === 0 ) {
-        //     console.log( "LogObjectProcessorTest passed!" );
-        // } else {
-        //     console.error( "*** LogObjectProcessorTest failed! ***" );
-        // }
-
-        this.writtenLogs = logObjectProcessor.writtenLogs;
+        // const logObjectContainerSource = new LogObjectContainerSource();
+        // logObjectContainerSource.refresh( "MessageManager_1526");
+        // this.writtenLogs = logObjectProcessor.writtenLogs;
     }
 }

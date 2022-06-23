@@ -25,6 +25,7 @@ export class LogObjectContainer {
         // eslint-disable-next-line functional/no-this-expression
         return this.logObjects; }
 
+    // eslint-disable-next-line functional/no-return-void
     clearLogs(): void {
         // eslint-disable-next-line functional/no-this-expression
         this.logObjects = []; }

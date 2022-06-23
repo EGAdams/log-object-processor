@@ -1,11 +1,12 @@
+/* eslint-disable functional/no-method-signature */
 /*
  *  interface MonitoredObject
  */
-interface IMonitoredObject {
-    id: string;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type IMonitoredObject = {
+    readonly id: string;
     logUpdate( message: string ): void;
-
     getMonitorId(): string;
-
     setMonitorId( newId:string ): void;
-}
+};

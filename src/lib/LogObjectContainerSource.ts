@@ -56,6 +56,7 @@ export class LogObjectContainerSource {
                 text = text.replaceAll( '\r', '' );
                 const file_array = text.split( "\n" );
                 const log_objects: ILogObject[] = [];
+                // eslint-disable-next-line functional/no-let
                 let parsed_line: ILogObject = { id: "", timestamp: 0, message: "", method: "" };
                 for ( const line of file_array ) {
                     if ( line.length > 0 ) {
