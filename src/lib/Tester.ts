@@ -14,8 +14,8 @@ export class Tester {
     start(): void {
         this.testableObjects.forEach( async specimen => {
             if ( specimen.length != 0 && !specimen.match( /^#/ )) {
-                const Subject = await import( "./" + specimen );
-                const subject = new Subject.default();
+                const Subject = await require( "./" + specimen );
+                const subject = new Subject[ specimen ]();
                 console.log( "\nbegin " + specimen + " test..." );
                 subject.testMe();
                 console.log( "end " + specimen + " test.\n" );

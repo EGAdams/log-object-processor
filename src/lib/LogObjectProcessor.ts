@@ -1,5 +1,4 @@
 /* eslint-disable functional/no-return-void */
-/* eslint-disable functional/immutable-data */
 /* eslint-disable functional/no-loop-statement */
 /* eslint-disable functional/no-this-expression */
 /* eslint-disable functional/prefer-readonly-type */
@@ -24,23 +23,28 @@ export class LogObjectProcessor  {
         this.logObjectContainer = logObjectContainerArg; }
 
     updateQue() {
-        console.log( 'updating que...' );
         const freshData = this.logObjectContainer.getLogObjects();
         for ( const logObject in freshData ) {
             this.addLog( freshData[ logObject ]); }}
 
     addLog( logToAdd: ILogObject ): void {
         if ( !FreshToolBox.isInArray( logToAdd, this.writtenLogs )) {
-            this.unwrittenLogs.push( logToAdd ); }}
-
+                this.unwrittenLogs.push( logToAdd ); }}
 
     processLogObjects(): void {
-        console.log( 'processing log objects...' );
         for ( const logObject in this.unwrittenLogs ) {
             this.writtenLogs.push( this.unwrittenLogs[ logObject ]); }
         this.unwrittenLogs = []; }
 
     getWrittenLogs(): Array< ILogObject > {
         return this.writtenLogs; }
+
+    getUnwrittenLogs(): Array< ILogObject > {
+        return this.unwrittenLogs; }
+
+    clearLogs(): void {
+        this.writtenLogs = [];
+        this.unwrittenLogs = [];
+        this.logObjectContainer.clearLogs(); }
 
 }

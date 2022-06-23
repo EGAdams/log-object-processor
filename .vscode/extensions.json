@@ -1,7 +1,7 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
+    // "esbenp.prettier-vscode", // so much time wasted.
     "eamodio.gitlens",
     "streetsidesoftware.code-spell-checker",
   ]

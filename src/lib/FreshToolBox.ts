@@ -1,4 +1,3 @@
-/* eslint-disable functional/immutable-data */
 /* eslint-disable functional/prefer-readonly-type */
 /* eslint-disable functional/no-throw-statement */
 /* eslint-disable functional/no-class */
@@ -30,7 +29,12 @@ export default class FreshToolBox {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     static isInArray ( objectToSearchFor: any, arrayToSearch: Array< any > ): boolean {
-        return( arrayToSearch.indexOf( objectToSearchFor ) > -1 ); }
+        for ( let element in arrayToSearch ) {
+            if ( arrayToSearch[ element ].id == objectToSearchFor.id ) {
+                return true; }
+        }
+        return false; 
+    }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     static assert( condition: any, msg?: string ): asserts condition {
