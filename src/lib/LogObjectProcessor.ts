@@ -8,7 +8,7 @@ import { ILogObject } from "./ILogObject";
 import { LogObjectContainer } from "./LogObjectContainer";
 /**
  * @description
- *   Maintains an array of written and unwritten logs from container
+ *   Maintains an array of written and unwritten logs from a container
  *   of log objects that is passed in on construction.
  *
  * @class LogObjectProcessor
@@ -24,12 +24,13 @@ export class LogObjectProcessor  {
 
     updateQue() {
         const freshData = this.logObjectContainer.getLogObjects();
-        for ( const logObject in freshData ) {
+        for ( const logObject in freshData ) {  // Array< ILogObject > freshData;
             this.addLog( freshData[ logObject ]); }}
 
     addLog( logToAdd: ILogObject ): void {
-        if ( !FreshToolBox.isInArray( logToAdd, this.writtenLogs )) {
-                this.unwrittenLogs.push( logToAdd ); }}
+        if ( !FreshToolBox.isInArray( logToAdd, this.unwrittenLogs )) {
+            this.unwrittenLogs.push( logToAdd ); }}
+
 
     processLogObjects(): void {
         for ( const logObject in this.unwrittenLogs ) {
