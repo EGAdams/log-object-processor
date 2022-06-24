@@ -7,14 +7,16 @@
  */
 import jQuery from "jquery";
 import IApiArgs from "./IApiArgs";
+import ISourceConfig from "./ISourceConfig";
 
 export default class DataSource {
-    readonly url: string;
-    constructor() {  // establish communication address
-        this.url = "https://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php"; }
+    // eslint-disable-next-line functional/prefer-readonly-type
+    private url :string;
+    constructor( config: ISourceConfig ) {  // establish communication address
+        this.url = config.location }
 
     runQuery( apiArgs: IApiArgs ) {  // send data, redirect result.
-        jQuery.post( this.url, { sql: apiArgs.query }).done( function( dataArg ) {
+        jQuery.post( this.url, { sql: apiArgs.query }).done( function( dataArg: string ) {
             try {
                 apiArgs.data = JSON.parse( dataArg );
             } catch( e ) {

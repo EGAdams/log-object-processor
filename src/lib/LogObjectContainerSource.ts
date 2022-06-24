@@ -10,6 +10,7 @@
 import jQuery from "jquery";
 import DataSource from './DataSource';
 import { ILogObject } from "./ILogObject";
+import { ISourceConfig } from "./ISourceConfig";
 import { LogObjectContainer } from "./LogObjectContainer";
 import { LogObjectProcessor } from "./LogObjectProcessor";
 
@@ -17,10 +18,10 @@ export class LogObjectContainerSource {
     logObjectContainer: LogObjectContainer;
     logObjectProcessor: LogObjectProcessor;
     dataSource: DataSource;
-    constructor() {
+    constructor( config: ISourceConfig ) {
         this.logObjectContainer = new LogObjectContainer();
         this.logObjectProcessor = new LogObjectProcessor( this.logObjectContainer );
-        this.dataSource = new DataSource();
+        this.dataSource = new DataSource( config );
     }
 
     getWrittenLogs () {
