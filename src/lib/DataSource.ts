@@ -7,13 +7,11 @@
  */
 import jQuery from "jquery";
 import IApiArgs from "./IApiArgs";
-import ISourceConfig from "./ISourceConfig";
 
 export default class DataSource {
     // eslint-disable-next-line functional/prefer-readonly-type
     private url :string;
-    constructor( config: ISourceConfig ) {  // establish communication address
-        this.url = config.location }
+    constructor( location: string ) { this.url = location } // establish communication address
 
     runQuery( apiArgs: IApiArgs ) {  // send data, redirect result.
         jQuery.post( this.url, { sql: apiArgs.query }).done( function( dataArg: string ) {

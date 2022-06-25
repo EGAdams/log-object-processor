@@ -18,25 +18,31 @@ export class LogObjectContainerSource {
     logObjectContainer: LogObjectContainer;
     logObjectProcessor: LogObjectProcessor;
     dataSource: DataSource;
-    constructor( config: ISourceConfig ) {
+    config: ISourceConfig
+    constructor( _config: ISourceConfig ) {
+        this.config = _config;
         this.logObjectContainer = new LogObjectContainer();
         this.logObjectProcessor = new LogObjectProcessor( this.logObjectContainer );
-        this.dataSource = new DataSource( config );
+        this.dataSource = new DataSource( _config.location );
     }
 
-    getWrittenLogs () {
-        return this.logObjectProcessor.getWrittenLogs();
+    getWrittenLogs () { return this.logObjectProcessor.getWrittenLogs(); }
+
+    refresh( identifier: string ) {
+        if ( this.config.type === "url" ) {
+            this.refreshFromDatabase( identifier );
+        } else if ( this.config.type === "file" ) {
+            this.refreshFromFile( identifier );
+        }
     }
 
-    refresh( object_view_id: string ) {
+    refreshFromDatabase( object_view_id: string ) {
         jQuery( document ).on( "consumeData", this.consumeData );
         const args = {
             query: "select object_data from monitored_objects where object_view_id ='" + object_view_id + "'",
             trigger: "consumeData",
             data: {},
-            thisObject: this
-        };
-
+            thisObject: this };
         this.dataSource.runQuery( args );
     }
 
