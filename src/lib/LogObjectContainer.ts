@@ -11,7 +11,8 @@ import { ILogObject } from "./ILogObject";
 export class LogObjectContainer {
     // eslint-disable-next-line functional/prefer-readonly-type
     logObjects: Array< ILogObject > = [];
-    constructor() { console.log( 'constructing LogObjectContainer object...' ); }
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    constructor() {}
 
     // eslint-disable-next-line functional/no-return-void
     addLog( logToAdd: ILogObject ): void {
