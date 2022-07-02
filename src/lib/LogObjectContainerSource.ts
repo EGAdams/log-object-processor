@@ -32,7 +32,7 @@ export class LogObjectContainerSource {
         if ( this.config.type === "url" ) {
             this.refreshFromDatabase( identifier );
         } else if ( this.config.type === "file" ) {
-            this.refreshFromFile( identifier );
+            this.refreshFromFile( this.config.location );
         }
     }
 
@@ -46,7 +46,7 @@ export class LogObjectContainerSource {
         this.dataSource.runQuery( args );
     }
 
-    consumeData( _event: any, result: { thisObject: any; data: string[][]; } ) {
+    consumeData( _event: any, result: { thisObject: any; data: string[][]; }) {
         const object_data = JSON.parse( result.data[ 0 ][ 0 ] );
         const logObjects = object_data.logObjects;
         for ( const logObject of logObjects ) {
@@ -78,8 +78,8 @@ export class LogObjectContainerSource {
                 for ( const logObject of log_objects ) {
                     this.logObjectContainer.addLog( logObject );
                 }
-                this.logObjectProcessor.updateQue();
-                this.logObjectProcessor.processLogObjects();
-            } );
+                this.logObjectProcessor.updateQue();         // from log object container to internal Q
+                this.logObjectProcessor.processLogObjects(); // from internal Q to written log objects
+            });
     }
 }

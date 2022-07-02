@@ -65,7 +65,7 @@ export class LogObjectProcessorTest implements ITestable {
         logObjectContainer.addLog( logObject2 );
         logObjectProcessor.updateQue();
         logObjectProcessor.processLogObjects();
-        FreshToolbox.assert( logObjectProcessor.writtenLogs.length === 11, "logObjectProcessor.writtenLogs.length === 512" );
+        FreshToolbox.assert( logObjectProcessor.writtenLogs.length === 11, "logObjectProcessor.writtenLogs.length === 11" );
 
         // these next 3 should not add anything to the writtenLogs array
         logObjectContainer.addLog( logObject1 );
