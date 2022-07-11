@@ -1,13 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable functional/no-loop-statement */
-/* eslint-disable functional/no-this-expression */
-/* eslint-disable functional/prefer-readonly-type */
-/* eslint-disable functional/no-class */
-/* eslint-disable import/order */
 /*
  *  class LogObjectContainerSource
  */
 import jQuery from "jquery";
+
 import DataSource from './DataSource';
 import { ILogObject } from "./ILogObject";
 import { ISourceConfig } from "./ISourceConfig";
@@ -63,7 +59,6 @@ export class LogObjectContainerSource {
                 text = text.replaceAll( '\r', '' );
                 const file_array = text.split( "\n" );
                 const log_objects: ILogObject[] = [];
-                // eslint-disable-next-line functional/no-let
                 let parsed_line: ILogObject = { id: "", timestamp: 0, message: "", method: "" };
                 for ( const line of file_array ) {
                     if ( line.length > 0 ) {
