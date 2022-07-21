@@ -1,7 +1,4 @@
 /* eslint-disable import/order */
-/* eslint-disable functional/immutable-data */
-/* eslint-disable functional/no-this-expression */
-/* eslint-disable functional/no-class */
 /*
  *  DataSource class
  */
@@ -9,7 +6,6 @@ import jQuery from "jquery";
 import IApiArgs from "./IApiArgs";
 
 export default class DataSource {
-    // eslint-disable-next-line functional/prefer-readonly-type
     private url :string;
     constructor( location: string ) { this.url = location } // establish communication address
 

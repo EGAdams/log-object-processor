@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable functional/prefer-readonly-type */
 /*
  *  interface IApiArgs
  */

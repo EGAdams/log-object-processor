@@ -1,18 +1,14 @@
-/* eslint-disable functional/no-return-void */
-/* eslint-disable functional/no-loop-statement */
-/* eslint-disable functional/no-this-expression */
-/* eslint-disable functional/prefer-readonly-type */
-/* eslint-disable functional/no-class */
-import FreshToolBox from "./FreshToolBox";
-import { ILogObject } from "./ILogObject";
-import { LogObjectContainer } from "./LogObjectContainer";
+
 /**
  * @description
- *   Maintains an array of written and unwritten logs from container
- *   of log objects that is passed in on construction.
+ *   Maintains an array of written and unwritten logs from
+ *   a container of log objects that is passed in on construction.
  *
  * @class LogObjectProcessor
  */
+import FreshToolBox from "./FreshToolBox";
+import { ILogObject } from "./ILogObject";
+import { LogObjectContainer } from "./LogObjectContainer";
 export class LogObjectProcessor  {
     logObjectContainer: LogObjectContainer;
     writtenLogs:   Array< ILogObject > = [];
@@ -46,5 +42,4 @@ export class LogObjectProcessor  {
         this.writtenLogs = [];
         this.unwrittenLogs = [];
         this.logObjectContainer.clearLogs(); }
-
 }

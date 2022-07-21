@@ -1,13 +1,11 @@
 import FreshToolBox from "./FreshToolBox";
 import { ILogObject } from "./ILogObject";
-
 /**
  * @description
  * container for log objects.
  *
  * @class LogObjectContainer
  */
-
 export class LogObjectContainer {
     logObjects: Array< ILogObject > = [];
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -17,9 +15,7 @@ export class LogObjectContainer {
         if ( !FreshToolBox.isInArray( logToAdd, this.logObjects )) {
             this.logObjects.push( logToAdd ); }}
 
-    getLogObjects(): Array< ILogObject > {
-        return this.logObjects; }
+    getLogObjects(): Array< ILogObject > { return this.logObjects; }
 
-    clearLogs(): void {
-        this.logObjects = []; }
+    clearLogs(): void { this.logObjects = []; }
 }

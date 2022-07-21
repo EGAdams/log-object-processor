@@ -1,4 +1,3 @@
-/* eslint-disable functional/prefer-type-literal */
 /*
  *  interface ISourceConfig
  */

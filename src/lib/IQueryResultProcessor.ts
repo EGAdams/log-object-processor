@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable functional/no-method-signature */
-/* eslint-disable functional/prefer-type-literal */
 /**
  *
  * @description
