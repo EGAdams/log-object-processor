@@ -1,8 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-var */
-/* eslint-disable functional/prefer-readonly-type */
-/* eslint-disable functional/no-this-expression */
-/* eslint-disable functional/no-class */
 import { ILogObject } from "./ILogObject";
 /**
  * @description
@@ -27,7 +23,7 @@ export class LogObjectFactory {
         return logObject; }
 
     private _getCallingMethod(): string {
-        var obj:any = {};
+        const obj:any = {};
         Error.captureStackTrace( obj, this._getCallingMethod );
         return obj.stack.split( '\n' )[ 2 ].match( /at\s+\w+.(\w+)/ )[ 1 ]; }
 }

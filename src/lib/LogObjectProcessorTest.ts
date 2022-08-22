@@ -1,10 +1,5 @@
-/* eslint-disable functional/no-let */
-/* eslint-disable functional/no-loop-statement */
-/* eslint-disable functional/prefer-readonly-type */
-/* eslint-disable functional/no-this-expression */
-/* eslint-disable functional/no-return-void */
-/* eslint-disable functional/no-class */
-import FreshToolbox from "./FreshToolbox";
+/** @class LogObjectProcessorTest */
+import FreshToolBox from "./FreshToolBox";
 import { ILogObject } from "./ILogObject";
 import ITestable from "./ITestable";
 import { LogObjectContainer } from "./LogObjectContainer";
@@ -28,7 +23,7 @@ export class LogObjectProcessorTest implements ITestable {
         const logObjectFactory   = new LogObjectFactory( this );
         for ( let i = 0; i < 3; i++ ) {
             logObjectContainer.addLog( logObjectFactory.createLogObject( "message_" + i )); }
-        FreshToolbox.assert( logObjectContainer.getLogObjects().length === 3, "logObjectContainer.getLogObjects().length === 3" );
+        FreshToolBox.assert( logObjectContainer.getLogObjects().length === 3, "logObjectContainer.getLogObjects().length === 3" );
         const logObjectProcessor = new LogObjectProcessor( logObjectContainer );
         logObjectProcessor.updateQue();
         logObjectProcessor.processLogObjects();
@@ -65,7 +60,7 @@ export class LogObjectProcessorTest implements ITestable {
         logObjectContainer.addLog( logObject2 );
         logObjectProcessor.updateQue();
         logObjectProcessor.processLogObjects();
-        FreshToolbox.assert( logObjectProcessor.writtenLogs.length === 11, "logObjectProcessor.writtenLogs.length === 11" );
+        FreshToolBox.assert( logObjectProcessor.writtenLogs.length === 11, "logObjectProcessor.writtenLogs.length === 11" );
 
         // these next 3 should not add anything to the writtenLogs array
         logObjectContainer.addLog( logObject1 );

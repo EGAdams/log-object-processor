@@ -43,6 +43,7 @@ export class LogObjectContainerSource {
     }
 
     consumeData( _event: any, result: { thisObject: any; data: string[][]; }) {
+        if( result.data.length  == 0 || result.data[ 0 ][ 0 ].length == 0 ) { return; }
         const object_data = JSON.parse( result.data[ 0 ][ 0 ] );
         const logObjects = object_data.logObjects;
         for ( const logObject of logObjects ) {
