@@ -40,7 +40,7 @@ export class LogObjectContainerSource implements IQueryResultProcessor {
 
     processQueryResult( result: any ) {
         if( result.length  == 0 ) { return; }
-        const object_data = JSON.parse( result );
+        const object_data = JSON.parse( result.object_data );
         const logObjects = object_data.logObjects;
         for ( const logObject of logObjects ) {
             result.thisObject.logObjectContainer.addLog( logObject );
