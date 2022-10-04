@@ -2,49 +2,45 @@
 /*
  *  class LogObjectContainerSource
  */
-import jQuery from "jquery";
-
-import DataSource from './DataSource';
+import FetchRunner from "./FetchRunner";
 import { ILogObject } from "./ILogObject";
+import IQueryResultProcessor from "./IQueryResultProcessor";
 import { ISourceConfig } from "./ISourceConfig";
+import ISourceQueryConfig from "./ISourceQueryConfig";
 import { LogObjectContainer } from "./LogObjectContainer";
 import { LogObjectProcessor } from "./LogObjectProcessor";
+import Model from './Model';
+import SourceData from "./SourceData";
 
-export class LogObjectContainerSource {
+export class LogObjectContainerSource implements IQueryResultProcessor {
     logObjectContainer: LogObjectContainer;
     logObjectProcessor: LogObjectProcessor;
-    dataSource: DataSource;
+    model: Model;
     config: ISourceConfig
+    source_query_config: ISourceQueryConfig;
     constructor( _config: ISourceConfig ) {
         this.config = _config;
         this.logObjectContainer = new LogObjectContainer();
         this.logObjectProcessor = new LogObjectProcessor( this.logObjectContainer );
-        this.dataSource = new DataSource( _config.location );
+        this.model = new Model( new SourceData({ Runner: FetchRunner, url: _config.location }));
+        this.source_query_config = { object_view_id: _config.object_id, object_data: {}};
     }
 
     getWrittenLogs () { return this.logObjectProcessor.getWrittenLogs(); }
 
-    refresh( identifier: string ) {
+    refresh() {
         if ( this.config.type === "url" ) {
-            this.refreshFromDatabase( identifier );
+            this.refreshFromDatabase();
         } else if ( this.config.type === "file" ) {
             this.refreshFromFile( this.config.location );
         }
     }
 
-    refreshFromDatabase( object_view_id: string ) {
-        jQuery( document ).on( "consumeData", this.consumeData );
-        const args = {
-            query: "select object_data from monitored_objects where object_view_id ='" + object_view_id + "'",
-            trigger: "consumeData",
-            data: {},
-            thisObject: this };
-        this.dataSource.runQuery( args );
-    }
+    refreshFromDatabase() { this.model.selectObject( this.source_query_config, this ); }
 
-    consumeData( _event: any, result: { thisObject: any; data: string[][]; }) {
-        if( result.data.length  == 0 || result.data[ 0 ][ 0 ].length == 0 ) { return; }
-        const object_data = JSON.parse( result.data[ 0 ][ 0 ] );
+    processQueryResult( result: any ) {
+        if( result.length  == 0 ) { return; }
+        const object_data = JSON.parse( result );
         const logObjects = object_data.logObjects;
         for ( const logObject of logObjects ) {
             result.thisObject.logObjectContainer.addLog( logObject );

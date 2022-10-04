@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-class */
 /*
  *  class LogObjectParser
  */

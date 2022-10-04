@@ -1,7 +1,3 @@
-/* eslint-disable functional/prefer-readonly-type */
-/* eslint-disable functional/no-this-expression */
-/* eslint-disable functional/no-return-void */
-/* eslint-disable functional/no-class */
 /*
  * class Tester
  */
