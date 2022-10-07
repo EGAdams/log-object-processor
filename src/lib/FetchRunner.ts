@@ -11,7 +11,7 @@ export default class FetchRunner {
         this.json_header        = { "Content-Type": "application/json"                  };
     } // establish communication address
 
-    async run( apiArgs: { type: string; }, callback : any ) {
+    async run( apiArgs: { type: string; }, callbackObject : IQueryResultProcessor ) {
         this.fetch_options = {
             method:  apiArgs.type,
             // mode:    'no-cors',
@@ -23,7 +23,7 @@ export default class FetchRunner {
             return res.json();
         }).then( data => {
             console.log( "data: " + data );
-            callback( data );
+            callbackObject.processQueryResult( callbackObject, data );
         }); }
 }
 // xhr.setRequestHeader( "Content-Type", "application/x-www-form-urlencoded" ); // allows "sql="... syntax!

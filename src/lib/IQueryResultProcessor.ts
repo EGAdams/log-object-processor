@@ -8,5 +8,5 @@
  * @interface IQueryResultProcessor
  */
  export default interface IQueryResultProcessor {
-    processQueryResult( queryResultToBeProcessed: any ): void;
+    processQueryResult( thisObject: IQueryResultProcessor, queryResultToBeProcessed: any ): void;
 }
